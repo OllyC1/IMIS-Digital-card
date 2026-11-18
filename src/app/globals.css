@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+:root { --background: 0 0% 100%; --foreground: 222.2 84% 4.9%; --card: 0 0% 100%; --card-foreground: 222.2 84% 4.9%; --primary: 222.2 47.4% 11.2%; --primary-foreground: 210 40% 98%; --border: 214.3 31.8% 91.4%; --radius: .5rem; }
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body { background: #f8fafc; color: #0f172a; font-family: "Inter", ui-sans-serif, system-ui, sans-serif; }
+button, input, textarea { font: inherit; }
+button, a { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 3px solid #67e8f9; outline-offset: 3px; }
+.reference-pattern { background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%23ffffff' fillOpacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.animate-float { animation: float 3s ease-in-out infinite; }
+.glass { background: rgb(255 255 255 / 10%); backdrop-filter: blur(10px); border: 1px solid rgb(255 255 255 / 20%); }
+.premium-hover { transition: all .3s cubic-bezier(.4, 0, .2, 1); }
+.premium-hover:hover { transform: translateY(-2px); box-shadow: 0 20px 40px rgb(0 0 0 / 10%); }
+.admin-field { display: grid; gap: .45rem; }
+.admin-field > span { color: #334155; font-size: .875rem; font-weight: 650; }
+.admin-input { width: 100%; border: 1px solid #cbd5e1; border-radius: .65rem; background: #fff; padding: .72rem .85rem; color: #0f172a; box-shadow: 0 1px 2px rgb(15 23 42 / 4%); }
+.admin-input:focus { border-color: #2563eb; outline: 3px solid rgb(37 99 235 / 14%); }
+.admin-button { display: inline-flex; min-height: 2.7rem; align-items: center; justify-content: center; gap: .5rem; border: 0; border-radius: .65rem; padding: .7rem 1rem; background: #1d4ed8; color: #fff; font-size: .875rem; font-weight: 700; cursor: pointer; }
+.admin-button:hover { background: #1e40af; }
+.admin-button-secondary { border: 1px solid #cbd5e1; background: #fff; color: #1e293b; }
+.admin-button-secondary:hover { background: #f1f5f9; }
+.admin-button-danger { background: #b91c1c; }
+.admin-button-danger:hover { background: #991b1b; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; } }
