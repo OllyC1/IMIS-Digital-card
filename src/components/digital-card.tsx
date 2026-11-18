@@ -104,13 +104,15 @@ export function DigitalCard({ card, publicUrl, vcard }: Props) {
         ))}
       </div>
 
-      <div className="relative z-10 container mx-auto px-4 py-8 max-w-md">
+      <div className="relative z-10 mx-auto w-full max-w-md px-4 py-8">
         <div className={`transform transition-all duration-1000 ${isLoaded ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"}`}>
           <div className="flex justify-center mb-6">
             <div className="relative">
               <div className="absolute -inset-2 bg-gradient-to-r from-blue-400 via-cyan-400 to-blue-500 rounded-full blur-lg opacity-60 animate-pulse" />
               <div className="relative bg-white rounded-full p-4 shadow-2xl border-4 border-white/50">
-                <Image src={COMPANY.logoPath} alt="IMIS Global Logo" width={100} height={100} className="rounded-full" priority />
+                <div className="relative h-[100px] w-[100px]">
+                  <Image src={COMPANY.logoPath} alt="IMIS Global Logo" fill sizes="100px" className="rounded-full object-cover" priority />
+                </div>
               </div>
             </div>
           </div>

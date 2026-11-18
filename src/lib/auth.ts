@@ -9,7 +9,7 @@ const COOKIE_NAME = "imis_admin_session";
 const SESSION_SECONDS = 8 * 60 * 60;
 const MAX_ATTEMPTS = 6;
 const ATTEMPT_WINDOW_MS = 15 * 60 * 1000;
-type SessionPayload = { email: string; exp: number };
+type SessionPayload = { role: "admin"; exp: number };
 
 function getSessionSecret() {
   const secret = process.env.ADMIN_SESSION_SECRET;
@@ -21,8 +21,8 @@ function sign(value: string) {
   return createHmac("sha256", getSessionSecret()).update(value).digest("base64url");
 }
 
-function createToken(email: string) {
-  const payload: SessionPayload = { email, exp: Math.floor(Date.now() / 1000) + SESSION_SECONDS };
+function createToken() {
+  const payload: SessionPayload = { role: "admin", exp: Math.floor(Date.now() / 1000) + SESSION_SECONDS };
   const encoded = Buffer.from(JSON.stringify(payload)).toString("base64url");
   return `${encoded}.${sign(encoded)}`;
 }
@@ -37,7 +37,7 @@ function verifyToken(token: string | undefined) {
   try {
     const payload = JSON.parse(Buffer.from(encoded, "base64url").toString()) as SessionPayload;
     if (payload.exp <= Math.floor(Date.now() / 1000)) return null;
-    if (payload.email.toLowerCase() !== process.env.ADMIN_EMAIL?.trim().toLowerCase()) return null;
+    if (payload.role !== "admin") return null;
     return payload;
   } catch {
     return null;
@@ -54,8 +54,8 @@ export async function requireAdmin() {
   return session;
 }
 
-export async function createAdminSession(email: string) {
-  (await cookies()).set(COOKIE_NAME, createToken(email), {
+export async function createAdminSession() {
+  (await cookies()).set(COOKIE_NAME, createToken(), {
     httpOnly: true,
     secure: process.env.NODE_ENV === "production",
     sameSite: "lax",

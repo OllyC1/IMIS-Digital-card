@@ -9,7 +9,9 @@ export function AdminHeader() {
     <header className="border-b border-slate-200 bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6">
         <Link href="/admin" className="flex items-center gap-3">
-          <Image src={COMPANY.logoPath} alt="IMIS Global" width={48} height={48} className="rounded-full" />
+          <span className="relative h-12 w-12 shrink-0">
+            <Image src={COMPANY.logoPath} alt="IMIS Global" fill sizes="48px" className="rounded-full object-cover" />
+          </span>
           <div><p className="font-bold text-slate-900">IMIS Global</p><p className="text-xs text-slate-500">Digital card administration</p></div>
         </Link>
         <nav className="flex items-center gap-2" aria-label="Administrator">

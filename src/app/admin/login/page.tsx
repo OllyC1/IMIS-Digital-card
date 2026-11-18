@@ -13,7 +13,11 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   return (
     <main className="grid min-h-screen place-items-center bg-gradient-to-br from-slate-950 via-blue-950 to-slate-900 px-4 py-10">
       <section className="w-full max-w-md rounded-3xl border border-white/15 bg-white p-7 shadow-2xl sm:p-9" aria-labelledby="login-title">
-        <div className="flex justify-center"><Image src={COMPANY.logoPath} alt="IMIS Global" width={92} height={92} className="rounded-full shadow-lg" priority /></div>
+        <div className="flex justify-center">
+          <div className="relative h-[92px] w-[92px]">
+            <Image src={COMPANY.logoPath} alt="IMIS Global" fill sizes="92px" className="rounded-full object-cover shadow-lg" priority />
+          </div>
+        </div>
         <div className="mt-6 text-center"><div className="mx-auto grid h-11 w-11 place-items-center rounded-full bg-blue-50 text-blue-700"><LockKeyhole size={21} /></div><h1 id="login-title" className="mt-4 text-2xl font-bold text-slate-900">Administrator login</h1><p className="mt-2 text-sm text-slate-500">Private access for the sole IMIS Global card administrator.</p></div>
         {error ? <p role="alert" className="mt-5 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-800">{error}</p> : null}
         <form action={loginAction} className="mt-7 space-y-5">
